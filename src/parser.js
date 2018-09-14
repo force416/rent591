@@ -28,7 +28,7 @@ module.exports = {
       if (_.includes(idList, postId)) {
         return;
       }
-      
+
       const sendData = {
         value1: object.address,
         value2: object.price,
@@ -40,6 +40,6 @@ module.exports = {
     });
 
     const writeData = objectList.map(object => object.post_id);
-    fs.writeFileSync('/Users/es0498/workspace/rent591/src/id.json', JSON.stringify({idList:writeData}));
+    fs.writeFileSync('/Users/es0498/workspace/rent591/src/id.json', JSON.stringify({ idList: writeData }));
   },
 };

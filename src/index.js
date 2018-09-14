@@ -1,5 +1,5 @@
 const parser = require('./parser');
 
 (async () => {
-  parser.start();
+  await parser.start();
 })();
