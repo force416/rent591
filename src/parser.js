@@ -20,7 +20,7 @@ module.exports = {
 
     const { data: { data: { data: objectList } } } = result;
 
-    const { idList } = JSON.parse(fs.readFileSync('/Users/es0498/workspace/rent591/src/id.json'));
+    const { idList } = JSON.parse(fs.readFileSync('src/id.json'));
 
     objectList.map(async (object) => {
       const { post_id: postId } = object;
@@ -40,6 +40,6 @@ module.exports = {
     });
 
     const writeData = objectList.map(object => object.post_id);
-    fs.writeFileSync('/Users/es0498/workspace/rent591/src/id.json', JSON.stringify({ idList: writeData }));
+    fs.writeFileSync('src/id.json', JSON.stringify({ idList: writeData }));
   },
 };
