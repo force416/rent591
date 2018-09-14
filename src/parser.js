@@ -17,30 +17,29 @@ const get591JSON = async () => {
 
 module.exports = {
   start: async () => {
-    const result = await get591JSON();
+    const { data: { data: { data: objectList } } } = await get591JSON();
 
-    const { data: { data: { data: objectList } } } = result;
+    // 讀取已送過的 post id list資料 from id.json file
+    let { idList } = JSON.parse(fs.readFileSync('src/id.json'));
 
-    const { idList } = JSON.parse(fs.readFileSync('src/id.json'));
-
-    objectList.map(async (object) => {
+    await objectList.map(async (object) => {
       const { post_id: postId } = object;
 
+      // 確認是否已送過
       if (_.includes(idList, postId)) {
         return;
       }
 
-      const sendData = {
+      // eslint-disable-next-line
+      await webhook.sendWebhook({
         value1: object.address,
         value2: object.price,
         value3: `https://rent.591.com.tw/rent-detail-${postId}.html`,
-      };
-
-      // eslint-disable-next-line
-      await webhook.sendWebhook(sendData);
+      });
     });
 
-    const writeData = objectList.map(object => object.post_id);
-    fs.writeFileSync('src/id.json', JSON.stringify({ idList: writeData }));
+    // 將 post id list 資料寫回 id.json file
+    idList = objectList.map(object => object.post_id);
+    fs.writeFileSync('src/id.json', JSON.stringify({ idList }));
   },
 };

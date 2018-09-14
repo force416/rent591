@@ -1,5 +1,5 @@
-const parser = require('./parser');
+const go = require('./parser').start;
 
 (async () => {
-  await parser.start();
+  await go();
 })();
