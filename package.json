@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "cheerio": "^1.0.0-rc.2"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "eslint": "^5.5.0",
