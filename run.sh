@@ -1,8 +1,7 @@
 #!/bin/bash
 
-max=1000000
-for (( i=1; i <= $max; ++i ))
-do
+while true; do
+    echo 'start...'
     /usr/local/bin/node ~/workspace/rent591/src/index.js
     sleep 60
 done
